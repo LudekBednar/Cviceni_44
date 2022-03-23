@@ -16,12 +16,14 @@ Pellentesque id dui viverra, auctor enim ut, fringilla est.
 Maecenas gravida turpis nec ultrices aliquet.
 '''
 
+
 def collect_emails(text):
     emails = []
     for i in text.split():
         if "@" in i:
             emails.append(i)
     return emails
+
 
 def select_num_emails(emails):
     num_emails = []
@@ -32,14 +34,18 @@ def select_num_emails(emails):
                 break
     return num_emails
 
+
 def extract_domains(emails):
-    extract_domains = []
-    for email in emails :
-        extract_domains.append(email[email.find("@")+1:])
-    return extract_domains
+    domains = []
+    for email in emails:
+        domains.append(email[email.find("@") + 1:])
+    return domains
 
+def main(domains,emails):
+    result = {}
+    result["domains"] = domains
+    result["emails_with_nums"] = emails
+    return result
 
-print(collect_emails(my_str))
-print(select_num_emails(collect_emails(my_str)))
-print(extract_domains(collect_emails(my_str)))
+print(main(extract_domains(collect_emails(my_str)),select_num_emails(collect_emails(my_str))))
 
