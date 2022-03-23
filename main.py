@@ -23,9 +23,23 @@ def collect_emails(text):
             emails.append(i)
     return emails
 
+def select_num_emails(emails):
+    num_emails = []
+    for email in emails:
+        for character in email[:email.find("@")]:
+            if character.isdigit():
+                num_emails.append(email)
+                break
+    return num_emails
 
-
+def extract_domains(emails):
+    extract_domains = []
+    for email in emails :
+        extract_domains.append(email[email.find("@")+1:])
+    return extract_domains
 
 
 print(collect_emails(my_str))
+print(select_num_emails(collect_emails(my_str)))
+print(extract_domains(collect_emails(my_str)))
 
